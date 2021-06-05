@@ -33,3 +33,16 @@ export {
   commentsCollection,
   likesCollection,
 };
+/**
+ * Add this to rules in firestore console  
+ * 
+  service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read;
+      allow write: if request.auth.uid != null
+    }
+  }
+}
+
+*/
