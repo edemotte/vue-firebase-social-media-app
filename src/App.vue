@@ -1,9 +1,24 @@
 <template>
   <div id="app">
+    <SiteNavigation v-if="showNav"></SiteNavigation>
     <router-view />
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import { mapState } from "vuex";
+import SiteNavigation from "@/components/SiteNavigation";
 
-</style>
+export default {
+  components: {
+    SiteNavigation,
+  },
+  computed: {
+    ...mapState(["userProfile"]),
+    showNav() {
+      console.log(Object.keys(this));
+      return Object.keys(this.userProfile).length > 1;
+    },
+  },
+};
+</script>

@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
-import { auth } from "../../firebase";
+import { auth } from "../firebase";
 
 Vue.use(VueRouter);
 
@@ -44,7 +44,6 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(
     (route_record) => route_record.meta.requiresAuth
   );
-  console.log("eugene", auth, auth.currentUser);
 
   if (requiresAuth && !auth.currentUser) {
     next("/login");

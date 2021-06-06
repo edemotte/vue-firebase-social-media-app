@@ -20,7 +20,7 @@
   </div>
 </template>
 <script>
-import { auth } from "../../firebase";
+import { auth } from "../firebase";
 
 export default {
   data() {

@@ -15,7 +15,7 @@
           <div>
             <label for="email_address">Email</label>
             <input
-              v-model.trim="login_form.user_email"
+              v-model.trim="loginForm.user_email"
               type="text"
               placeholder="you@email.com"
               id="email_address"
@@ -24,7 +24,7 @@
           <div>
             <label for="password">Password</label>
             <input
-              v-model.trim="login_form.user_password"
+              v-model.trim="loginForm.user_password"
               type="password"
               placeholder="******"
               id="password"
@@ -92,7 +92,7 @@ export default {
   },
   data() {
     return {
-      login_form: {
+      loginForm: {
         user_email: "",
         user_password: "",
       },
@@ -109,8 +109,8 @@ export default {
   methods: {
     login() {
       this.$store.dispatch("login", {
-        email: this.login_form.user_email,
-        password: this.login_form.user_password,
+        email: this.loginForm.user_email,
+        password: this.loginForm.user_password,
       });
     },
     signup() {
