@@ -45,7 +45,9 @@ const store = new Vuex.Store({
       //set user profile in state
       commit("setUserProfile", userProfile.data());
       //change route to dashboard
-      router.push("/");
+      if (router.currentRoute.path === "/login") {
+        router.push("/");
+      }
     },
     async logout({ commit }) {
       await firebase.auth.signOut();
