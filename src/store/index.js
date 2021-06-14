@@ -5,14 +5,30 @@ import router from "../router/index";
 
 Vue.use(Vuex);
 
+// realtime firebase connection
+firebase.postsCollection.orderBy("createdOn", "desc").onSnapshot((snapshot) => {
+  let postsArray = [];
+
+  snapshot.forEach((document) => {
+    let post = document.data();
+    post.id = document.id;
+    postsArray.push(post);
+  });
+  store.commit("setPosts", postsArray);
+});
+
 const store = new Vuex.Store({
   state: {
     userProfile: {},
+    posts: [],
   },
   //mutations are used to commit + track state changes (best practice: actions call mutations which update state directly)
   mutations: {
     setUserProfile(state, value) {
       state.userProfile = value;
+    },
+    setPosts(state, value) {
+      state.posts = value;
     },
   },
   actions: {
